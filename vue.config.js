@@ -23,12 +23,14 @@ module.exports = {
 		loaderOptions: {
 			postcss: {
 				plugins: [
-					// require('postcss-plugin-px2rem')({
-					// 	rootValue: 75,
-					// 	exclude: /(node_module)/,
-					// 	minPixelValue: 3,
-					// 	selectorBlackList:['van']
-					// })
+					require('postcss-plugin-px2rem')({
+						// 依据设计稿的大小定制 或者75
+						// 此处写的37.5 页面看效果的时候，页面宽度设置为375宽度进行调试，查看
+						rootValue: 37.5, 
+						exclude: /(node_module)/,
+						minPixelValue: 3, // 大于3px以上的数据才进行转换计算
+						// selectorBlackList:['van']
+					})
 					// require('postcss-px-to-viewport')({
 					// 	viewportWidth: 750,
 					// 	exclude: /(node_module)/,

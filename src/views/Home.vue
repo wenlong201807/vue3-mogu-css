@@ -10,6 +10,7 @@
       <div class="text">two-box1</div>
       <div class="box2">three-box2</div>
     </div>
+    <div class="box3" circle>66</div>
   </div>
 </template>
 
@@ -33,6 +34,10 @@ header {
   color: $color-primary;
   @include box-center(center, center);
 }
-
+.box3 {
+  height: 50px;
+  width: 50px;
+  background-color: red;
+}
 
 </style>

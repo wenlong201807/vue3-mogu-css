@@ -36,6 +36,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 // 主题样式写法
 .box {
   @include t-shadow;
