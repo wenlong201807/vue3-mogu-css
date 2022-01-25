@@ -37,3 +37,6 @@ service.interceptors.response.use((response) => {
 });
 
 export default service;
+
+// 接口模拟数据地址
+// http://rap2.taobao.org/repository/editor?id=297723&itf=2190888

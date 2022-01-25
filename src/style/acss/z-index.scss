@@ -10,6 +10,9 @@
 [z-popper] {
   z-index: 2000;
 }
+
+用法
+<header z-popper>sdf</header>
 */
 @each $style in (normal $index-normal, top $index-top, popper $index-popper ) {
   [z-#{nth($style, 1)}] {

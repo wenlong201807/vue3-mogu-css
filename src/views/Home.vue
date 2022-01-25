@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <header>sdf</header>
+    <header z-popper circle>sdf</header>
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <a href="">asdfasdf</a>

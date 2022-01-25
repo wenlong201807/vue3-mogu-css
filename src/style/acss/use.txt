@@ -1,0 +1,6 @@
+[z-popper] {
+  z-index: 2000;
+}
+
+用法
+<header z-popper>sdf</header>
