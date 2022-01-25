@@ -15,6 +15,26 @@
   </div>
 </template>
 
+<script>
+// 接口测试
+import {getUsers} from '@/api';
+import { onMounted, reactive } from 'vue';
+export default {
+  setup() {
+    const data = reactive({
+      list: [],
+    })
+    onMounted(() =>{
+      // debugger
+      getUsers().then(res => {
+        console.info(res);
+        data.list = res.data;
+      }).catch(e => console.info('接口有错误', e))
+    })
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 // 主题样式写法
 .box {

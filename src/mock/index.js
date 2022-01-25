@@ -8,6 +8,23 @@ Mock.setup({
   timeout: '300-600'
 })
 
+// 接口测试
+Mock.mock(
+  '/api/users',
+  'get',
+  function(){
+    return Mock.mock({
+      'status': 200,
+      'msg': '请求成功',
+      'data|3': [
+        {
+          name: '@cname',
+          age: '@integer(20, 50)',
+        }
+      ]
+    })
+  }
+)
 // mall 相关
 Mock.mock('/api/mall/categorys', 'get', mall.getCategorys)
 Mock.mock(/\/api\/mall\/categorys\/\d*/, 'get', mall.getOneCategory)

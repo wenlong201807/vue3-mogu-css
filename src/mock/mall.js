@@ -4,7 +4,7 @@ import {getParamsFromRestful} from '@/utils/tools'
 export default {
   
   // 获取商品类目
-  getCategorys: config => { 
+  getCategorys: () => { 
     return Mock.mock({
       "data|20": [
         {
@@ -167,7 +167,7 @@ export default {
   },
 
   // 轮播图
-  getBanners: config => {
+  getBanners: () => {
     return {
       "data": [
         {
@@ -189,7 +189,7 @@ export default {
   },
 
   // 获取所有品类视频列表
-  getBrandVideos: config => {
+  getBrandVideos: () => {
     return Mock.mock({
       "data": [
         {
@@ -251,7 +251,7 @@ export default {
   },
 
   // 推荐类目
-  getRecommendatoryCategorys: config => {
+  getRecommendatoryCategorys: () => {
     return Mock.mock({
       "data|15": [
         {
@@ -287,7 +287,7 @@ export default {
   },
 
   // 获取活动列表
-  getPromotions: config => {
+  getPromotions: () => {
     return Mock.mock({
       "data|4": [
         {
@@ -460,7 +460,7 @@ export default {
   },
 
   // 热门搜索
-  getHotCategorys: config => {
+  getHotCategorys: () => {
     return Mock.mock({
       "data|5": [
         {

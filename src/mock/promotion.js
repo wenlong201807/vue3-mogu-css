@@ -4,7 +4,7 @@ import {getParamsFromRestful} from '@/utils/tools'
 export default {
 
   // 今日必抢
-  getHotGoods: config => {
+  getHotGoods: () => {
     return Mock.mock({
       "data|3": [
         {
@@ -424,7 +424,7 @@ export default {
   },
 
   // 拒绝臃肿
-  getJjyzGoods: config => {
+  getJjyzGoods: () => {
     return Mock.mock({
       "data": {
         "hot|5": [
@@ -476,7 +476,7 @@ export default {
   },
 
   // 运动风童鞋专场
-  getYdftxGoods: config => {
+  getYdftxGoods: () => {
     return Mock.mock({
       "data": {
         "hot|3": [
@@ -524,7 +524,7 @@ export default {
   },
 
   // 秋冬配饰分享
-  getQdpsfxGoods: config => {
+  getQdpsfxGoods: () => {
     return Mock.mock({
       "data|10": [
         {

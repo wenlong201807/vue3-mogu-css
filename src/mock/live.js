@@ -5,6 +5,7 @@ export default {
 
   // 获取直播列表
   getLives: config => {
+    console.info('获取直播列表config:', config);
     return Mock.mock({
       "data|10": [
           {

@@ -1,0 +1,5 @@
+mock 的几种方式
+
+1 rap编写接口文档，mock数据，后端维护
+2 swagger 注解生成接口文档，mock数据，后端维护
+3 本地mockjs，前度维护
