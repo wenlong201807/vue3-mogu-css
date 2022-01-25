@@ -1,0 +1,42 @@
+Theme 层代码实现
+
+只要全局加上一个属性选择器，就搞定了。
+
+原理如此，但没有实现通用，如何改造呢？
+1 将此属性放在html标签上，App.vue 控制属性新增
+2 同时，对应的这些样式可以全局生效
+3 通过js控制属性切换
+
+额外副作用
+不小心用到了这些样式，可能会同名
+
+<!-- data-theme="default" cool warm -->
+    <div data-theme="default">
+      <div class="box">one-box</div>
+      <div class="text">two-box1</div>
+      <div class="box2">three-box2</div>
+    </div>
+
+
+    <style lang="scss" scoped>
+
+    [data-theme='default'] .box {
+      background-color: pink;
+    }
+    [data-theme='cool'] .box {
+      background-color: blue;
+    }
+    [data-theme='warm'] .box {
+      background-color: yellow;
+    }
+    
+    [data-theme='default'] .text {
+      background-color: pink;
+    }
+    [data-theme='cool'] .text {
+      background-color: blue;
+    }
+    [data-theme='warm'] .text {
+      background-color: yellow;
+    }
+    </style>

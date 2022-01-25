@@ -4,6 +4,12 @@
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <a href="">asdfasdf</a>
+    <!-- data-theme="default" cool warm -->
+    <div>
+      <div class="box">one-box</div>
+      <div class="text">two-box1</div>
+      <div class="box2">three-box2</div>
+    </div>
   </div>
 </template>
 
@@ -27,4 +33,6 @@ header {
   color: $color-primary;
   @include box-center(center, center);
 }
+
+
 </style>

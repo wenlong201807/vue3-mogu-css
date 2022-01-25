@@ -1,15 +1,22 @@
 /* 双 11 主题色 */
-$theme-warm: (
+// $theme-warm: (
 
-  t-color-primary : (
-    color: #F9CC03
-  ),
+//   t-color-primary : (
+//     color: #F9CC03
+//   ),
 
-  t-shadow : (
-    shadow: 0 0 8px #F9CC03
-  ),
+//   t-shadow : (
+//     shadow: 0 0 8px #F9CC03
+//   ),
 
-  t-border : (
-    border: 1Px solid #F9CC03
-  )
-)
+//   t-border : (
+//     border: 1Px solid #F9CC03
+//   )
+// )
+
+[data-theme='warm'] .box {
+  background-color: yellow;
+}
+[data-theme='warm'] .text {
+  color: yellow;
+}
