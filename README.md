@@ -30,3 +30,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - [mockjs.com示例](http://mockjs.com/examples.html)
 - [模拟线上数据：点击地址查看完整接口数据](http://rap2api.taobao.org/app/mock/297723/api/user)
 - [本地使用mockjs](https://github.com/nuysoft/Mock/wiki/Getting-Started)
+
+### 小问题&解决方案vs前因后果
+- [解决git push代码到github上一直提示输入用户名及密码的问题](https://blog.csdn.net/yychuyu/article/details/80186783)
