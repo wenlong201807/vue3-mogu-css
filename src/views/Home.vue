@@ -11,6 +11,15 @@
       <div class="box2">three-box2</div>
     </div>
     <div class="box3" circle>66</div>
+    <div class="home">
+      <div class="home__item1">
+        <img src="https://www.baidu.com/link?url=yprp_9FwI6-J4usLm39WsvKa1od8YXIi2jBx-zfMtLwDdwQXulRo84TMbIJNgMu7oZR2ubMY1Wg5d5gpbUniga&wd=&eqid=97de744f00159d840000000361ef9876" alt="">
+      </div>
+      <div class="home__item2">
+        <p>sdfbgsefb阿萨德嘎是尬是电饭煲噶方便撒</p>
+      </div>
+      <div class="home__item3">88</div>
+    </div>
   </div>
 </template>
 

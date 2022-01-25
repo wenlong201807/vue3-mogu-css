@@ -883,7 +883,7 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
-"@babel/runtime@^7.11.0", "@babel/runtime@^7.8.4":
+"@babel/runtime@7.x", "@babel/runtime@^7.11.0", "@babel/runtime@^7.8.4":
   version "7.16.7"
   resolved "https://registry.npmmirror.com/@babel/runtime/download/@babel/runtime-7.16.7.tgz#03ff99f64106588c9c403c6ecb8c3bafbbdff1fa"
   integrity sha512-9E9FJowqAsytyOY6LG+1KuueckRL+aQW+mKvXRXnuFGyRAyepJPmEo9vgMfXUA6O9u3IeEdv9MAkppFcaQwogQ==
@@ -976,11 +976,6 @@
   version "1.1.3"
   resolved "https://registry.npmmirror.com/@nodelib/fs.stat/download/@nodelib/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha1-K1o6s/kYzKSKjHVMCBaOPwPrphs=
-
-"@popperjs/core@^2.9.2":
-  version "2.11.2"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.2.tgz#830beaec4b4091a9e9398ac50f865ddea52186b9"
-  integrity sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==
 
 "@soda/friendly-errors-webpack-plugin@^1.7.1":
   version "1.8.1"
@@ -1156,22 +1151,15 @@
     anymatch "^3.0.0"
     source-map "^0.6.0"
 
-"@vant/icons@^1.7.1":
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/@vant/icons/-/icons-1.7.3.tgz#e51b46065cfde445617401ebe309a33b62a29725"
-  integrity sha512-tW4EqzxN4kXw1rnlnQJQHofEifPbt/gECOWiibomht8QLyvoGuE4iUmDFS288dJ07ZjuTy0bhdABj0SENo2fmQ==
+"@vant/icons@1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@vant/icons/-/icons-1.3.2.tgz#f0930010e7aaa9b06b03636fe9b5bc6477ea224b"
+  integrity sha512-uP0nUWw0pyMMGt3L9BO5fEacz/Cn7QIea0/gFoC/jPLv9ufvUxjPsV9HSyyUJsqMJ3qlYLAI/SxZDbmMZA814A==
 
-"@vant/popperjs@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@vant/popperjs/-/popperjs-1.1.0.tgz#b4edee5bbfa6fb18705986e313d4fd5f17942a0f"
-  integrity sha512-8MD1gz146awV/uPxYjz4pet22f7a9YVKqk7T+gFkWFwT9mEcrIUEg/xPrdOnWKLP9puXyYtm7oVfSDSefZ/p/w==
-  dependencies:
-    "@popperjs/core" "^2.9.2"
-
-"@vant/use@^1.3.4":
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/@vant/use/-/use-1.3.4.tgz#f99482d63682973a2775aa5c1a9cf906862a4f71"
-  integrity sha512-XvZkPCjcmEBhD+T3vB68thOG6P9jazld6aBTMenhbAQd4FT/x9AiKIWPJx4MvhYoSIWt7fju6K01XTJldWs1hw==
+"@vant/use@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@vant/use/-/use-0.0.9.tgz#938b41e8dd682f063450f45699111ab30dd279c1"
+  integrity sha512-P+/q3MqFCmoNStQU8qpPxDNtBLy9Q82xx05APm7ZqEhoJLPynK1u0giC1JeEvFoSTEJ3y4XxN+R7YqmpXnf/7Q==
 
 "@vue/babel-helper-vue-jsx-merge-props@^1.2.1":
   version "1.2.1"
@@ -8410,14 +8398,15 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vant@3:
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/vant/-/vant-3.4.2.tgz#6746ffab059e238b770fac59193aa30b54394ada"
-  integrity sha512-Mupj1FDW19QJpKUhu+gZgcUt3FhKly2AuPASTLmiuby0JtxV5P/XaTvMxwNCEz0oH2Q8QShppTaxoSPaz2z0yg==
+vant@3.0.0-beta.4:
+  version "3.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/vant/-/vant-3.0.0-beta.4.tgz#2fb7b50bf9c94345794eb4e71a812d504ff24306"
+  integrity sha512-IDmQFTJYceqArFSVcEh7a+HWk3/XnuWdnJcLgRBVk+Vf2CVjt5nLskgQafQcrHHoKbt4A/o3WTq0/FYFGh5frA==
   dependencies:
-    "@vant/icons" "^1.7.1"
-    "@vant/popperjs" "^1.1.0"
-    "@vant/use" "^1.3.4"
+    "@babel/runtime" "7.x"
+    "@vant/icons" "1.3.2"
+    "@vant/use" "^0.0.9"
+    vue-lazyload "1.2.3"
 
 vary@~1.1.2:
   version "1.1.2"
@@ -8460,6 +8449,11 @@ vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://registry.nlark.com/vue-hot-reload-api/download/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha1-UylVzB6yCKPZkLOp+acFdGV+CPI=
+
+vue-lazyload@1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/vue-lazyload/-/vue-lazyload-1.2.3.tgz#901f9ec15c7e6ca78781a2bae4a343686bdedb2c"
+  integrity sha512-DC0ZwxanbRhx79tlA3zY5OYJkH8FYp3WBAnAJbrcuoS8eye1P73rcgAZhyxFSPUluJUTelMB+i/+VkNU/qVm7g==
 
 "vue-loader-v16@npm:vue-loader@^16.1.0":
   version "16.8.3"

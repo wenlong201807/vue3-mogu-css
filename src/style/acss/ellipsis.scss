@@ -7,5 +7,6 @@
 @for $i from 1 through 3 {
   [ellipsis#{$i}] {
     // @include ellipsis($i);
+    @include box-clamp($i); // 换了个名字而已 全局搜索看看
   }
 }

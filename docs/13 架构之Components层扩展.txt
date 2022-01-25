@@ -1,0 +1,15 @@
+Components 的本质：
+1、 oocss -> BEM
+2、 oocss核心原则：结构与皮肤分离
+
+皮肤：宽高相关的，比如内外边距，边框
+c-box-skin 组件
+c-launch 组件 顶部使用
+c-foot-nav 组件 底部导航
+c-single-center
+
+1 公共样式
+结构相似的
+
+
+2 页面样式

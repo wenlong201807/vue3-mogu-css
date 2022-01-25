@@ -1,0 +1,12 @@
+html
+color #333
+background #f1f1f1
+
+p
+line-height: 1.5
+
+img
+width: 100%;
+
+查看style文件夹
+实际中使用的element 放在了base中
