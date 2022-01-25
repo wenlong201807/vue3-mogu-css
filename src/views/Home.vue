@@ -20,17 +20,19 @@
       </div>
       <div class="home__item3">88</div>
     </div>
+    <balance-two theme="outline" size="24" fill="#333"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
-
+import { BalanceTwo } from '@icon-park/vue-next';
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    HelloWorld,
+    BalanceTwo
   }
 }
 </script>

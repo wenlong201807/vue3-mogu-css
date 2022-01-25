@@ -33,7 +33,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - [Swagger Petstore](https://petstore.swagger.io/)
 - [Sassmagic - v1.0.0样式库](http://w3cplus.github.io/SassMagic/)
 - [效果举例： @include box-center($justify: center, $align: center);](http://w3cplus.github.io/SassMagic/#undefined-mixin-box-center)
+- [制作SvgIcon 的平台 IconPark](https://iconpark.oceanengine.com/official)
+- [github官网--指南 SvgIcon](https://github.com/bytedance/IconPark/tree/master/packages/vue-next)
 
 ### 小问题&解决方案vs前因后果
 - [解决git push代码到github上一直提示输入用户名及密码的问题](https://blog.csdn.net/yychuyu/article/details/80186783)
-- ["vant": "3.0.0-beta.4"] 版本太低无法使用需要指定版本安装
+- yarn add vant@3.0.0-beta.4 版本太低无法使用需要指定版本安装

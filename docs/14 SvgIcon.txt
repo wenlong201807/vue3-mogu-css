@@ -1,0 +1,12 @@
+svgicon 优势vs字体图标
+
+1 svg支持多色图标
+2 svg可以控制图标不同部分，加入动画
+3 svg是矢量图形，图标锐利，体积更小
+
+推荐平台：字节跳动维护的
+制作SvgIcon 的平台 IconPark https://iconpark.oceanengine.com/home
+并运用到项目中 实现SvgIcon
+
+另一个平台也可以生成svg图标 
+https://www.iconfont.cn/search/index?searchType=icon&q=%E4%BA%94%E8%A7%92%E6%98%9F

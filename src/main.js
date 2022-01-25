@@ -10,6 +10,7 @@ import mgjUI from '@/components' // 自定义插件使用
 import './style/index.scss';
 // import 'vant/lib/toast/style';
 import '@/mock'; // mock数据
+import '@icon-park/vue-next/styles/index.css';
 
 // 自定义插件使用，需要在这里use(mgjUI)
 createApp(App).use(store).use(router).use(mgjUI).mount('#app')
