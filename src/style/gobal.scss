@@ -49,4 +49,4 @@
 @import "./tools/mixins/_sticky-footer.scss";
 @import "./tools/mixins/_tilted.scss";
 @import "./tools/mixins/_typographic.scss";
-// @import "./theme"; // 未生效
+@import "./theme"; // scss 方式 通过vue.config.js 引入需要编译

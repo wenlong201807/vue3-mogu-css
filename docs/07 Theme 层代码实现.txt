@@ -9,6 +9,7 @@ Theme 层代码实现
 
 额外副作用
 不小心用到了这些样式，可能会同名
+解决方案：通过统一定制化命名（t-xxx-xxx）主题类，同时使用 @include 方式引入
 
 <!-- data-theme="default" cool warm -->
     <div data-theme="default">
