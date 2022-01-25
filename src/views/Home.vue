@@ -1,7 +1,9 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <header>sdf</header>
+    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <a href="">asdfasdf</a>
   </div>
 </template>
 
@@ -16,3 +18,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+header {
+  height: 200px;
+  width: 200px;
+  background-color: pink;
+  color: $color-primary;
+  @include box-center(center, center);
+}
+</style>

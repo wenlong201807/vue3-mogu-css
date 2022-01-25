@@ -1,0 +1,25 @@
+ACSS
+
+一个样式属性一个类
+好处：极强的复用性、维护成本低
+坏处：破坏了css命名的语义化
+
+经典框架 https://www.tailwindcss.cn/docs/installation
+
+Acss 层代码实现
+1 让样式极限复用(保证有点继续存在)
+
+2 解决Acss无语异化缺点：属性选择器(解决原来的弊端)
+<div class="media f1 ml-4 my-2 h-32">
+优化后
+<div class="media" f1 ml-4 my-2 h-32>
+.media {}
+[f1] {} // 属性选择器定义样式
+引入的问题：如何抽离这样的效果
+
+3 Settiongs与Acss层的关系
+解决引入的问题：将var.scss 文件中的变量同步到属性选择器中
+// 将属性名与样式效果做关联
+[color333] {
+  color: #333
+}

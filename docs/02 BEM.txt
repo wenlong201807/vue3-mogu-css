@@ -1,0 +1,10 @@
+
+块block  元素element 修饰符modifier
+作用：命名规范，让页面结构清晰
+进阶版的oocss
+
+举例：
+class="menu__tab menu__tab--style1"
+特点： 块名__组件名--类名(两个极为相似的元素做微调)
+
+参考官网 https://en.bem.info/methodology/quick-start/#introduction

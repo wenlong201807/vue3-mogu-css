@@ -1,0 +1,25 @@
+SMACSS 分类效果
+[CSS模块化可扩展架构（SMACSS)](https://github.com/jeffwcx/translate-smacss-zh)
+
+分类：Base，Layout，Modules，State，Theme
+好处：易维护，易复用，易扩展
+命名规范：
+.l-header （.layout-header简写）  
+.is-hidden 
+.theme-nav （不同皮肤，用于不同节日展示）
+
+
+
+具体说明：
+一、base: 
+1 浏览器自带默认样式进行重置 normalize.css 对应官网https://github.com/necolas/normalize.css
+2 对某些特殊元素进行自定义
+
+二、layout：页面布局
+1 页面大布局（比如：上中下，左中右）
+
+三、modules：公共组件，可以服用
+1 可循环组件的渲染样式
+
+四、State：相同状态放在一起
+1 展示与隐藏效果的

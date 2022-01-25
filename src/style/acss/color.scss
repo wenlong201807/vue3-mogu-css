@@ -1,0 +1,43 @@
+/*字体颜色
+[font-primary] {
+  color: #333;
+}
+
+[font-secondary] {
+  color: #666;
+}
+
+参考资料 https://www.sass.hk/docs/  @each
+*/
+
+@each $style in (primary $color-text-primary, secondary $color-text-secondary) {
+  [font-#{nth($style, 1)}] {
+    color: #{nth($style, 2)};
+  }
+}
+
+/*背景颜色
+[bga1] {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+[bga2] {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+[bg-primary] {
+  background-color: #F1F1F1;
+}
+*/
+
+@each $i in 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 {
+  [bga#{($i * 10)}] {
+    background-color: rgba(0, 0, 0, $i);
+  }
+}
+
+@each $style in (primary $background-color-primary, secondary $background-color-secondary) {
+  [bg-#{nth($style, 1)}] {
+    background-color: #{nth($style, 2)};
+  }
+}

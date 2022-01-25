@@ -1,0 +1,30 @@
+分层效果（七层）自然可以自定义扩展其他层级
+参考官网 https://github.com/ahmadajmi/awesome-itcss
+(颗粒度细化，可插拔)
+STGBCAT
+特点：
+1 下一层，永远继承上面所有的样式
+2 样式权重越低，复用性越高
+
+
+一、Settiings维护整个网站的共用变量
+
+二、Tools维护样式的工具库
+1 比如共用。。。功能
+
+三、Generic 浏览器默认样式重置
+1 引入normalize.css 重置浏览器默认样式
+
+四、Base对指定元素的定制化
+1 对各类元素基础样式进行补充
+
+五六合并在一块，形成BEM,变成通用组件里头了
+五、Objects网站oocss样式的定制化
+六、Components通用组件的定制化对应modules
+1 oocss -> BEM(进阶版oocss)
+2 经典的组件：删格、布局组件 
+参考：https://vant-contrib.gitee.io/vant/v3/#/zh-CN/quickstart
+3 自定义组件
+
+
+七、Trumps定义权重值尤其是important

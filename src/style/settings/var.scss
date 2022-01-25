@@ -1,0 +1,34 @@
+// 定义一些公共变量
+// 公共变量：颜色，边框，字体大小，阴影，层级。。。
+// scss官网 https://www.sass.hk/docs/
+// 参考element https://github.com/ElemeFE/element/blob/dev/packages/theme-chalk/src/common/var.scss
+
+
+/* Color
+----------------------- */
+$color-primary: #FF5777;
+$color-white: #FFFFFF;
+$color-black: #000000;
+
+$color-text-primary: #333333;
+$color-text-secondary: #666666;
+$color-text-tertiary: $color-white;
+$color-text-quaternary: $color-primary;
+
+$border-color-base: #E5E5E5;
+
+$background-color-primary: #F1F1F1;
+$background-color-secondary: $color-white;
+$background-color-tertiary: $color-primary;
+
+/* Border
+----------------------- */
+$border-width-base: 1Px !default;
+$border-style-base: solid !default;
+$border-base: $border-width-base $border-style-base $border-color-base !default;
+
+/* z-index
+----------------------- */
+$index-normal: 1;
+$index-top: 1000;
+$index-popper: 2000;
