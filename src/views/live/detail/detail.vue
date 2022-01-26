@@ -79,13 +79,13 @@
 <script>
 import {getLivesById} from '@/api/live'
 import { onMounted, reactive, toRefs } from 'vue'
-import {useRoute, useRouter} from 'vue-router';
+import {useRoute} from 'vue-router';
 import Toast from 'vant/lib/toast';
 
 export default {
 	setup() {
 		const route = useRoute();
-    const router = useRouter();
+    // const router = useRouter();
 		const data = reactive({
 			live: {}
 		});

@@ -126,7 +126,7 @@ export default {
       router.go(-1);
     }
     
-    onMounted(res=>{
+    onMounted(()=>{
       const id = route.query.id || 0;
 
       Toast.loading({

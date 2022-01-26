@@ -3,12 +3,21 @@
 // function resolve(dir) {
 //   return path.join(__dirname, dir)
 // }
-
+// 参考资料 https://www.cnblogs.com/susutong/p/11457551.html
 module.exports = {
-	publicPath: process.env.NODE_ENV === 'production'
-		? '/dragon-mogujie/'
-		: '/',
+	// publicPath: process.env.NODE_ENV === 'production'
+	// 	? '/dragon-mogujie/'
+	// 	: '/',
+	publicPath: './',
+	productionSourceMap: false, 
+	// 生成的 HTML 中的 <link rel="stylesheet"> 和 <script> 标签上启用 Subresource Integrity (SRI)
+  integrity: false,  
 	devServer: {
+		open: true,
+		host: 'localhost',
+    port: 8082,
+    https: false,
+    hotOnly: false, 
 		// proxy: {
 		// 	'/api/*': {
 		// 		target: 'https://www.easy-mock.com/mock/5fb49a3d8ab3eb27be073c08/mogujie',
@@ -18,6 +27,7 @@ module.exports = {
 		// 		}
 		// 	}
 		// }
+		// before: (app) => {}
 	},
   css: {
 		loaderOptions: {
@@ -66,4 +76,10 @@ module.exports = {
 	// 			})
 	// 			.end()
 	// }
+	// 构建时开启多进程处理babel编译
+  parallel: require('os').cpus().length > 1,
+	// 第三方插件配置
+  pluginOptions: {
+
+  }
 }

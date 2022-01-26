@@ -112,7 +112,7 @@
 <script>
 import {getHotGoods, getFastBuyGoods} from '@/api/promotion';
 import { onMounted, reactive, toRefs } from 'vue';
-import {useRouter} from 'vue-router';
+// import {useRouter} from 'vue-router';
 import CGoods from './goods';
 import Toast from 'vant/lib/toast';
 
@@ -121,7 +121,7 @@ export default {
     CGoods
   },
   setup() {
-    const router = useRouter();
+    // const router = useRouter();
     const data = reactive({
       hotGoodList: [],
       hour: '',
@@ -137,7 +137,7 @@ export default {
       const nowTime = new Date();
       const endTime = new Date();
       let leftTime = parseInt((endTime.getTime() + data.time - nowTime.getTime())/1000)
-      let d = parseInt(leftTime/(24*60*60))
+      // let d = parseInt(leftTime/(24*60*60))
       let h = formate(parseInt(leftTime/(60*60)%24))
       let m = formate(parseInt(leftTime/60%60))
       let s = formate(parseInt(leftTime%60))
@@ -304,7 +304,7 @@ export default {
 
   @include e(status) {
     @include dimensions(120px, 36px);
-    border-radius: (36px/2);
+    border-radius: clac(36px / 2);
     opacity: 0.8;
     @include m(active) {
       opacity: 1;

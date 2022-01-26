@@ -36,14 +36,14 @@
 </template>
 <script>
 import {getBrandVideosById} from '@/api/mall';
-import {useRoute, useRouter} from 'vue-router';
+import {useRoute} from 'vue-router';
 import { onMounted, reactive, toRefs } from 'vue';
-import boxSkin from '../../../components/box-skin/box-skin.vue';
+// import boxSkin from '../../../components/box-skin/box-skin.vue';
 export default {
-  components: { boxSkin },
+  // components: { boxSkin },
   setup() {
     const route = useRoute();
-    const router = useRouter();
+    // const router = useRouter();
     const data = reactive({
       list: []
     });

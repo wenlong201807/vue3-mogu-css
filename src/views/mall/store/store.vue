@@ -145,7 +145,7 @@
 </template>
 <script>
 import CAvatar from '@/components/avatar';
-import {Swipe, SwipeItem} from '@/components/swipe';
+// import {Swipe, SwipeItem} from '@/components/swipe';
 import { onMounted, reactive, toRefs } from 'vue';
 import {getRecommendatoryCategorys, getBanners, getBrandVideos, getPromotions} from '@/api/mall';
 import {getChats} from '@/api/me';
@@ -155,8 +155,8 @@ import Toast from 'vant/lib/toast';
 export default {
 	components: {
 		CAvatar,
-		CSwipe: Swipe,
-		CSwipeItem: SwipeItem
+		// CSwipe: Swipe,
+		// CSwipeItem: SwipeItem
 	},
 	setup() {
 		const data = reactive({

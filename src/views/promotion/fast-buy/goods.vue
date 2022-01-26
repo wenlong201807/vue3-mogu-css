@@ -63,13 +63,13 @@ export default {
 
   @include e(progress) {
     @include dimensions(280px, 28px);
-    border-radius: (28px/2);
+    border-radius: clac(28px / 2);
     background-color: #ffd9de;
   }
 
   @include e(buy) {
     @include dimensions(182px, 54px);
-    border-radius: (54px/2);
+    border-radius: clac(54px / 2);
     background-color: #e95160;
   }
 

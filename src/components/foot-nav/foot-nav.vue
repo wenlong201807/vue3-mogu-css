@@ -24,7 +24,7 @@ export default {
     list: {
       type: Object,
       default: function() {
-        return [];
+        return {};
       }
     }
   }

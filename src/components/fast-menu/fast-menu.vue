@@ -75,7 +75,7 @@
   </div>
 </template>
 <script>
-import { reactive, toRefs, createApp } from 'vue';
+import { reactive, toRefs } from 'vue';
 import Popup from 'vant/lib/popup';
 import 'vant/lib/popup/style';
 
