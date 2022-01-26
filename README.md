@@ -48,3 +48,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - 在网速慢的时候，页面空白，怎么解决？
 - 每个页面，各个模块的加载先后顺序混乱，如何定义各模块加载的先后顺序？
 - 顶部模块【下载app这一模块】在主站中不必展示，当在第三方站点打开时才展示的，这一块如何制定加载策略？怎么解决cls问题？
+
+### tag
+- [参考资料](https://www.jianshu.com/p/046bf2956178)
