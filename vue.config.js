@@ -3,7 +3,9 @@
 // function resolve(dir) {
 //   return path.join(__dirname, dir)
 // }
-// 参考资料 https://www.cnblogs.com/susutong/p/11457551.html
+// 参考资料 
+// https://www.cnblogs.com/susutong/p/11457551.html
+// https://blog.csdn.net/qq_39288987/article/details/103040022?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_paycolumn_v3&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1.pc_relevant_paycolumn_v3&utm_relevant_index=1
 module.exports = {
 	// publicPath: process.env.NODE_ENV === 'production'
 	// 	? '/dragon-mogujie/'

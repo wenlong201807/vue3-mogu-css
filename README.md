@@ -19,6 +19,10 @@ yarn build
 ```
 yarn lint
 ```
+### 本地测试运行打包后的dist代码项目
+```
+yarn run dist
+```
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
