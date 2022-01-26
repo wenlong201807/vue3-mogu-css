@@ -8,7 +8,7 @@ import 'lib-flexible/flexible.js' // 全局js外部库
 import 'normalize.css/normalize.css'
 import mgjUI from '@/components' // 自定义插件使用
 import './style/index.scss';
-// import 'vant/lib/toast/style';
+import 'vant/lib/toast/style';
 import '@/mock'; // mock数据
 import '@icon-park/vue-next/styles/index.css';
 

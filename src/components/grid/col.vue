@@ -42,7 +42,7 @@ export default {
     },
     flexBasis: {
       type: Number,
-      default: 'auto'
+      default: 1 // 'auto'
     },
     order: Number,
     gridType: {

@@ -20,6 +20,7 @@
 import {getUsers} from '@/api';
 import { onMounted, reactive } from 'vue';
 export default {
+  name: 'AboutTest',
   setup() {
     const data = reactive({
       list: [],

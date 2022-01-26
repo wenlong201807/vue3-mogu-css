@@ -21,18 +21,21 @@
       <div class="home__item3">88</div>
     </div>
     <balance-two theme="outline" size="24" fill="#333"/>
+    <swiper></swiper>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from '@/components/test/HelloWorld.vue'
+import Swiper from '@/components/test/Swiper.vue'
 import { BalanceTwo } from '@icon-park/vue-next';
 export default {
-  name: 'Home',
+  name: 'HomeTest',
   components: {
     HelloWorld,
-    BalanceTwo
+    BalanceTwo,
+    Swiper,
   }
 }
 </script>
