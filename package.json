@@ -5,8 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "dist": "npm run build && node server.js",
-    "lint": "vue-cli-service lint"
+    "dist": "npm i && npm run build && node server.js",
+    "lint": "vue-cli-service lint",
+    "pm:online": "npm i && npm run build && pm2 start ecosystem.config.js"
   },
   "dependencies": {
     "@icon-park/vue-next": "^1.3.6",

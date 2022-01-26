@@ -1,0 +1,105 @@
+
+一、vue-cli打包后本地运行dist文件中的index.html操作
+参考 http://www.52codes.net/article/71701.html
+
+
+二、上传文件至服务器操作
+参考资料 https://blog.csdn.net/weixin_41010198/article/details/81162719
+scp -r localfile.txt username@192.168.0.1:/home/username/
+１）scp是命令，-r是参数
+２）localfile.txt 是文件的路径和文件名
+３）username是服务器账号
+４）192.168.0.1是要上传的服务器ip地址
+５）/home/username/是要拷入的文件夹路径
+
+在本地终端运行
+scp -r /Users/autohome/Desktop/vue3-mogu-css/dist root@47.98.181.79:/opt
+scp -r /Users/autohome/Desktop/vue3-mogu-css root@47.98.181.79:/opt
+
+linux中安装nvm
+参考 https://www.cnblogs.com/wangcp-2014/p/10691291.html
+
+防火墙
+Linux 打开端口方法（防火墙操作） 
+https://www.cnblogs.com/rh-fernando/p/11340057.html
+
+CentOS7 防火墙操作（测试命令全部有效）
+对防火墙功能操作之后，都需要重新启动防火墙
+ 
+1， 查看防火墙状态：
+firewall-cmd --state
+systemctl status firewalld.service
+
+2， 开启防火墙：
+systemctl start firewalld.service
+
+3，设置开机自启：
+systemctl enable firewalld.service
+
+4， 重启防火墙：
+systemctl restart firewalld.service
+
+5， 查看防火墙设置开机自启是否成功：
+systemctl is-enabled firewalld.service;echo $?
+
+6，关闭防火墙：
+systemctl stop firewalld.service
+
+7，开端口命令：
+打开单个端口：firewall-cmd --zone=public --add-port=80/tcp --permanent
+打开多个端口：firewall-cmd --zone=public --add-port=20000-29999/tcp --permanent
+
+--permanent  为永久生效，不加为单次有效（重启失效）
+
+8，查看开启端口：
+netstat -ntlp 或：firewall-cmd --list-ports
+
+9，关闭端口命令：
+firewall-cmd --zone=public --remove-port=80/tcp --permanent
+
+10、查看端口是否打开
+firewall-cmd --zone=public --query-port=80/tcp
+
+
+
+linux 中 nvm安装指南 https://github.com/nvm-sh/nvm
+
+根目录中安装即可，全局使用
+1 安装指令
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+2 资源加载
+source ~/.bashrc
+3 版本检查，是否安装成功
+nvm --version
+
+4 使用nvm安装 node版本
+$ nvm use 16
+Now using node v16.9.1 (npm v7.21.1)
+$ node -v
+v16.9.1
+$ nvm use 14
+Now using node v14.18.0 (npm v6.14.15)
+$ node -v
+v14.18.0
+$ nvm install 12
+Now using node v12.22.6 (npm v6.14.5)
+$ node -v
+v12.22.6
+
+5 nvm 操作命令补充 https://www.jianshu.com/p/863a34d8d278
+$ nvm -h //查看nvm的指令
+$ nvm list //查看本地已经安装的node版本列表
+$ nvm list available //查看可以安装的node版本
+$ nvm install latest //安装最新版本的node
+$ nvm install [version][arch] //安装指定版本的node 例如：nvm install 10.16.3 安装node v10.16.3 arch表示电脑的位数 如果电脑需要安装32位的， 则运行：nvm install 10.16.3 32
+$ nvm use [version] //使用node 例如：nvm use 10.16.3
+$ nvm uninstall [version] //卸载node
+
+
+pm2 后台运行 
+pm2官网指南 https://pm2.keymetrics.io/docs/usage/process-management/
+
+
+
+
+
