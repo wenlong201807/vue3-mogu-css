@@ -1,0 +1,88 @@
+快速搭建与基本参数使用
+
+Mainline version 开发版
+Stable version 稳定版
+Legacy version 历史版
+
+pgp 安全校验，非官方网站安装时，可能缺少这个
+
+官网：https://nginx.org/en/download.html
+
+Linux彻底卸载Nginx【本机环境：centos7使用yum安装的Nginx】
+https://www.jianshu.com/p/c1ce9eec5fb2
+
+1.首先输入命令 ps -ef | grep nginx检查一下nginx服务是否在运行。
+2.停止Nginx服务
+3.查找、删除Nginx相关文件
+  查看Nginx相关文件：whereis nginx
+  find查找相关文件
+  依次删除find查找到的所有目录：rm -rf /usr/sbin/nginx
+4 再使用yum清理
+5 ok nginx 卸载完成！
+
+重新安装linux 中 nginx
+官网教程 RHEL/CentOS： https://nginx.org/en/linux_packages.html#RHEL-CentOS
+1 yum install yum-utils
+2 vi /etc/yum.repos.d/nginx.repo
+写入一下内容
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/centos/7/$basearch/
+gpgcheck=0
+enabled=1
+3 yum list | grep nginx # 查看可下载的nginx
+nginx.x86_64        1:1.20.2-1.el7.ngx             nginx # 当前版本
+4 yum install nginx # 下载nginx 经过几个步骤安装的nginx 不用再经过解析，编译步骤了
+5 nginx -v # 查看版本
+nginx version: nginx/1.20.2
+6 nginx -V # 查看配置参数 当前配置参数有如下
+configure arguments: 
+--prefix=/etc/nginx 
+--sbin-path=/usr/sbin/nginx 
+--modules-path=/usr/lib64/nginx/modules 
+--conf-path=/etc/nginx/nginx.conf 
+--error-log-path=/var/log/nginx/error.log 
+--http-log-path=/var/log/nginx/access.log 
+--pid-path=/var/run/nginx.pid 
+--lock-path=/var/run/nginx.lock 
+--http-client-body-temp-path=/var/cache/nginx/client_temp 
+--http-proxy-temp-path=/var/cache/nginx/proxy_temp 
+--http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp 
+--http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp 
+--http-scgi-temp-path=/var/cache/nginx/scgi_temp 
+--user=nginx 
+--group=nginx 
+--with-compat 
+--with-file-aio 
+--with-threads 
+--with-http_addition_module 
+--with-http_auth_request_module 
+--with-http_dav_module 
+--with-http_flv_module 
+--with-http_gunzip_module 
+--with-http_gzip_static_module 
+--with-http_mp4_module 
+--with-http_random_index_module 
+--with-http_realip_module 
+--with-http_secure_link_module 
+--with-http_slice_module 
+--with-http_ssl_module 
+--with-http_stub_status_module 
+--with-http_sub_module 
+--with-http_v2_module 
+--with-mail --with-mail_ssl_module 
+--with-stream 
+--with-stream_realip_module 
+--with-stream_ssl_module 
+--with-stream_ssl_preread_module 
+--with-cc-opt='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong 
+--param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=generic -fPIC' --with-ld-opt='-Wl,-z,relro -Wl,-z,now -pie'
+
+
+
+
+
+
+
+
+

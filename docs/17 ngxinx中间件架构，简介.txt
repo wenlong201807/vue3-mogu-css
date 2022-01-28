@@ -1,0 +1,113 @@
+一、环境调试确认
+
+四项确认
+1 确认系统网络 
+ping www.baidu.com 判断网络联通
+2 确认yum可用  
+yum list |grep gcc 有内容，则已经安装
+3 确认关闭iptables规则
+iptables -L 查看iptables 规则
+iptables -F 关闭
+iptables -t nat -L 查看iptables nat规则
+iptables -t nat -F 关闭防火墙
+4 确认停用selinux
+getenforce  # 查看 selinux 状态
+getenforce 0 # 关闭 selinux
+
+两项安装
+yum -y install gcc gcc-c++ autoconf pcre pcre-devel make automake
+yum -y install wget httpd-tools vim
+
+一次初始化
+cd /opt
+mkdir app download logs work backup
+
+二、Nginx简述
+Nginx是一个开源且高性能、可靠的HTTP中间件、代理服务器。
+开源：代码可见
+高性能：支持海量并发的web服务
+可靠：运行稳定，不会因为不可控因素导致挂掉
+
+
+常见的HTTP服务
+1 HTTPD   Apache 基金会
+2 IIS     微软
+3 GWS     Google
+4 Nginx
+5 LiteSpeed
+6 Goodle Servers
+
+三、为什么选择Nginx
+为什么Nginx近年来应用广泛？
+1 Nginx具备的优势，很多其他的服务也在采用。如Apach的event
+2 Nginx在功能全面上并不占据优势
+3 Nginx具备的功能是企业最常使用而且最需要的
+4 Nginx具备对轻量级性能优势
+
+亲赖原因
+1 nginx1.0 版本 采用IO多路复用epoll模型
+什么是IO多路复用
+参考答案 https://www.zhihu.com/question/28594409
+
+2 多线程多进程处理模式
+一个线程只能处理一个流的I/O事件。如果想要同时处理多个流，要么多进程fort，要么多线程pthread_create，很不幸这两种方法效率不算最高
+所以，同样交给一个线程去采用IO复用模式
+
+3 实现IO复用的处理方式
+3.1 多进程多线程处理
+3.2 多路IO复用
+
+
+4 实现IO流非阻塞模式
+while true { // 永久循环
+  for i in stream[]; { // 遍历
+    if i has data // 判断在执行
+    read until unavailable
+  }
+}
+
+问题所在：如果所有的流都没有数据，那么只会白白浪费CPU
+
+5 IO复用内核模式种类
+类型一、select模型，poll模型
+类型二、epoll模型
+
+select -> poll -> epoll
+
+select模型
+while true {
+  select(streams[])
+    for i in streams[] {
+      if i has data
+      read until unavailable
+    }
+}
+select、epoll相当于一个代理
+
+6 Epoll模型优势
+优势一、解决select模型对于文件句柄FD打开限制
+优势二、采用callback函数回调机制优化模型效率
+其他小优势。。。
+
+原因三、cpu亲和affinity
+什么是cpu亲和：是把一种cpu核心和nginx工作进程绑定方式，把每个worker进程固定在一个cpu上执行，减少切换cpu的cache miss，获得更好的性能。
+
+原因四、sendfile（文件传输上的优势）
+传统的文件传输有经过 User space，然后在经过 内核(Kornol space)处理。linux则只内核(Kornol space)处理，少了 User space。因此更高效
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

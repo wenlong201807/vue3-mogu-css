@@ -12,14 +12,15 @@ scp -r localfile.txt username@192.168.0.1:/home/username/
 ４）192.168.0.1是要上传的服务器ip地址
 ５）/home/username/是要拷入的文件夹路径
 
-在本地终端运行
+三、在本地终端运行
 scp -r /Users/autohome/Desktop/vue3-mogu-css/dist root@47.98.181.79:/opt
 scp -r /Users/autohome/Desktop/vue3-mogu-css root@47.98.181.79:/opt
+服务器测试地址47.98.181.79:3002/#/mall/home
 
-linux中安装nvm
+四、linux中安装nvm
 参考 https://www.cnblogs.com/wangcp-2014/p/10691291.html
 
-防火墙
+五、防火墙
 Linux 打开端口方法（防火墙操作） 
 https://www.cnblogs.com/rh-fernando/p/11340057.html
 
@@ -62,7 +63,7 @@ firewall-cmd --zone=public --query-port=80/tcp
 
 
 
-linux 中 nvm安装指南 https://github.com/nvm-sh/nvm
+六、linux 中 nvm安装指南 https://github.com/nvm-sh/nvm
 
 根目录中安装即可，全局使用
 1 安装指令
@@ -96,10 +97,12 @@ $ nvm use [version] //使用node 例如：nvm use 10.16.3
 $ nvm uninstall [version] //卸载node
 
 
-pm2 后台运行 
+七、pm2 后台运行 
 pm2官网指南 https://pm2.keymetrics.io/docs/usage/process-management/
 
-
+八、 nginx代理服务[未完善]截止到3.13
+官网 http://nginx.org/en/#basic_http_features
+Nginx中文文档 https://www.nginx.cn/doc/
 
 
 

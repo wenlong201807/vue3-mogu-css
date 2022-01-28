@@ -1,0 +1,46 @@
+
+安装工具 yum install curl
+测试使用 curl http://localhost
+
+只查看请求头，响应头的内容
+curl -v http://www.imooc.com >/dev/null
+返回结果如下：# 等效于在浏览器中的network控制面板查看的内容
+* Rebuilt URL to: http://www.imooc.com/
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 117.121.101.40...
+* TCP_NODELAY set
+* Connected to www.imooc.com (117.121.101.40) port 80 (#0)
+> GET / HTTP/1.1
+> Host: www.imooc.com
+> User-Agent: curl/7.61.1
+> Accept: */*
+>
+< HTTP/1.1 301 Moved Permanently
+< Server: *********
+< Date: Thu, 27 Jan 2022 09:38:24 GMT
+< Content-Type: text/html
+< Content-Length: 182
+< Connection: keep-alive
+< Location: https://www.imooc.com
+<
+{ [182 bytes data]
+100   182  100   182    0     0   2192      0 --:--:-- --:--:-- --:--:--  2192
+* Connection #0 to host www.imooc.com left intact
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
