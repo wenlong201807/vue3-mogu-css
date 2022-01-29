@@ -42,7 +42,7 @@ http://3.imooc.com   -> 3.imooc.com  -> 虚拟主机C
 网卡1  <----> ip1 (192.168.1.1)
 网卡2  <----> ip2 (192.168.1.2)
  
-方式二、单网卡多ip的方式 # 测试演示
+方式二、单网卡多ip的方式 # 测试演示 # 阿里云服务器不支持
 网卡1  <----> ip1 (192.168.1.1)
 网卡1  <----> ip2 (192.168.1.2)
 
@@ -55,7 +55,7 @@ ip a
 # 标记为1 的是本地回环网卡，不是实际的网卡
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
+    inet 127.0.0.1/8 scope host lo 
        valid_lft forever preferred_lft forever
     inet6 ::1/128 scope host
        valid_lft forever preferred_lft forever
@@ -130,10 +130,101 @@ location / {
 nginx -s stop -c /etc/nginx/nginx.conf # 关闭
 nginx -c /etc/nginx/nginx.conf # 关闭
 
-测试访问地址 172.20.218.60/index.html
-2.14 怎么就不能访问呢？？？
+测试访问地址 
+curl http://172.20.218.60:80/index.html
+curl http://172.20.218.61:80/index.html
+测试成功！！！
+
+问题：2.14 怎么就不能访问呢？？？ 
+解答：阿里云服务器，需要配置安全组，确保对应端口对外开放。
 
 
+阿里云安全组已经开放3001-3006段的端口
+查看：https://ecs.console.aliyun.com/#/securityGroupDetail/region/cn-hangzhou/groupId/sg-bp1ca5vr2fxhkurf1ovz/detail/intranetIngress
+实践操作：基于端口的配置方式
+一个nginx主机(理论)
+http://192.168.1.1:80   -> listen:80  -> 虚拟主机A
+http://192.168.1.1:81   -> listen:81  -> 虚拟主机B
+http://192.168.1.1:82   -> listen:82  -> 虚拟主机C
+
+注意检查端口是否被占用的情况
+ss -luntp  # Local Address:Port 这一栏列出了所有使用中的端口 # Process一栏，可以查看是谁在使用者端口
+或者 netstat -luntp # Local Addres
+
+准备工作
+目录 /opt/app/code 新增三个子目录 code  code1 
+
+cd /etc/nginx
+cd conf.d/  有两个配置文件 vserver1.conf  vserver2.conf
+
+vim vserver1.conf 修改内容
+-> listen      3001;
+vim vserver2.conf 修改内容
+-> listen      3003;
+
+1 修改了nginx配置文件需要检查配置是否正确，
+nginx -tc /etc/nginx/nginx.conf
+-> nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+-> nginx: configuration file /etc/nginx/nginx.conf test is successful
+2 关闭原来的配置
+nginx -s stop -c /etc/nginx/nginx.conf
+3 重启nginx配置
+nginx -c /etc/nginx/nginx.conf
+
+确认防火墙关闭 iptables -L 
+测试效果
+-> http://47.98.181.79:3001/index.html 返回正确结果
+-> http://47.98.181.79:3003/index.html 返回正确结果
 
 
+配置vue3项目 
+目录所在 /opt/vue3-mogu-css/dist
+测试地址 -> http://47.98.181.79:3005/#/mall/home 返回正确结果
+成功！！！
 
+实践操作 方式三：基于多个host名称方式（多域名方式）【对应相应头里面的host字段】
+一个nginx主机  只需要配置同一个 IP: 192.168.1.1 port:80
+http://1.imooc.com   -> 1.imooc.com  -> 虚拟主机A
+http://2.imooc.com   -> 2.imooc.com  -> 虚拟主机B
+http://3.imooc.com   -> 3.imooc.com  -> 虚拟主机C
+
+test.wenlong.live
+resume.wenlong.live
+my-num.wenlong.live
+
+第一种方式，通过修改本机的host信息增加域名
+vim /etc/hosts
+
+172.20.218.61  1.imoocc.com
+172.20.218.61  2.imoocc.com
+然后验证是否可联通
+ping 1.imoocc.com 已联通
+ping 2.imoocc.com
+
+前置准备完成，现在修改nginx配置
+cd /etc/nginx
+cd conf.d
+
+vim vserver1.conf
+    -> listen      80;
+    -> server_name  1.imoocc.com;
+    或者
+    -> server_name  test.wenlong.live;
+vim vserver2.conf
+    -> listen      80;
+    -> server_name  2.imoocc.com;
+
+检查配置语法是否正确
+1 修改了nginx配置文件需要检查配置是否正确，
+nginx -tc /etc/nginx/nginx.conf
+-> nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+-> nginx: configuration file /etc/nginx/nginx.conf test is successful
+2 关闭原来的配置
+nginx -s stop -c /etc/nginx/nginx.conf
+3 重启nginx配置
+nginx -c /etc/nginx/nginx.conf
+
+测试访问地址
+-> curl http://1.imoocc.com 成功返回
+-> curl http://2.imoocc.com 成功返回
+-> curl http://test.wenlong.live 成功返回

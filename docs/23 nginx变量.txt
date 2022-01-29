@@ -1,0 +1,56 @@
+
+
+nginx变量
+
+1 http请求变量 
+    arg_PARAMETER
+    http_HEADER # 请求体中的字段：开头$_全部单词小写，-变成_。 
+      举例：$http_user_agent
+    sent_http_HEADER # 服务端返回给客户端的
+2 内置变量 
+  具体可查看官网 https://nginx.org/en/docs/syslog.html
+  所有内置变量 https://nginx.org/en/docs/http/ngx_http_core_module.html#var_status
+3 自定义变量 - 自己定义[后期讲解]
+
+默认访问日志的记录内容包含如下：
+  log_format  main '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+# 返回内容： 172.20.218.60 - - [28/Jan/2022:17:10:45 +0800] "GET / HTTP/1.1" 200 265 "-" "curl/7.61.1" "-"
+逐个说明：- [] 这些都是固定字符展示，其他则为变量
+$remote_addr # 客户端ip地址
+$remote_user # 客户端请求服务器的认证名，默认是没有开启这个模块的，就不展示
+$time_local  # 28/Jan/2022:17:10:45 +0800
+$request     # GET / HTTP/1.1 请求行信息
+$status      # 200 返回的状态码
+$body_bytes_sent      # 265 服务器返回给客户端body的信息大小
+$http_referer         # 上一级页面是哪个（进入此页面的前一个页面url地址）
+$http_user_agent      # 客户端内容，使用那个浏览器，看这里
+$http_x_forwarded_for # 进入每一级，所携带的ip信息
+
+
+
+
+每次修改nginx配置都需要重新检查nginx配置，关闭，重启
+1 nginx -t -c /etc/nginx/nginx.conf
+2 nginx -s reload -c /etc/nginx/nginx.conf
+3 ps -aux|grep nginx # 看看哪些地方用着nginx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

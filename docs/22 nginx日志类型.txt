@@ -1,0 +1,58 @@
+
+
+
+nginx日志类型
+包括 error_log  access_log
+
+log_format
+
+Syntax: log_format name [escape=default|json] string ...; # 语法格式按照这个
+Default: log_format combined "..."; # 如果没有特别写，那么走默认内容
+Context: http # 日志模块只能放在http模块中，不能放在其他地方
+
+cd /etc/nginx
+vim nginx.conf
+
+查看日志
+tail -f /var/log/nginx/error.log
+tail -n 200 /var/log/nginx/access.log
+
+在http模块中
+http {
+  include       /etc/nginx/mime.types;
+  default_type  application/octet-stream;
+
+  # 此处$开头的是nginx中的变量写法
+  # 变量写法特点参考：network面板中响应体对应的字段
+  # remote_xxx   $http_xxx
+  log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                    '$status $body_bytes_sent "$http_referer" '
+                    '"$http_user_agent" "$http_x_forwarded_for"';
+
+  access_log  /var/log/nginx/access.log  main; # main 与log_format中的 main 需要保持一致，
+
+  sendfile        on;
+  #tcp_nopush     on;
+
+  keepalive_timeout  65;
+
+  #gzip  on;
+
+  include /etc/nginx/conf.d/*.conf;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

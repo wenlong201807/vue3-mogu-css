@@ -1,0 +1,36 @@
+连接指南
+
+本地vscode，如何使用ssh连接远程linux。
+参考链接 https://jingyan.baidu.com/article/3065b3b6ce87f0ffcff8a4ad.html
+
+1 电脑安装vscode编辑器，并打开。
+2 首先，切换到vscode插件面板，确认安装了Remote SSH插件。
+3 点击vscode左下角按钮，在弹出的菜单中，选择Connect to Host。
+- [如果没有反应，重新开启vscode编辑器]
+4 接着，选择如图所示的configure SSH hosts。
+5 选择合适的配置文件位置。一般是当前用户，选择Users目录下的即可。
+- # Read more about SSH config files: https://linux.die.net/man/5/ssh_config
+- 此配置文件位置： User>autohome>.ssh>config
+Host myLinux # 类似项目的名字，自定义即可
+    HostName 66.66.66.66 # 选择linux服务器的ip
+    User root # linux是多用户操作系统，需要选择连接的是那个用户
+6 常规操作，打开文件夹按钮，选择需要打开的文件
+7 继续愉快的玩耍。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,182 @@
+nginx 模块讲解
+
+1 nginx 官方模块
+2 第三方模块【没有得到官方认证的就是第三方模块，如：其他公司，个人编写的nginx模块】后期讲解
+
+详解nginx官方模块大致包含：
+--with-compat 
+--with-file-aio 
+--with-threads 
+--with-http_addition_module 
+--with-http_auth_request_module 
+--with-http_dav_module 
+--with-http_flv_module 
+--with-http_gunzip_module 
+--with-http_gzip_static_module 
+--with-http_mp4_module 
+--with-http_random_index_module # 第二个，作用目录中选择一个随机主页 
+--with-http_realip_module 
+--with-http_secure_link_module 
+--with-http_slice_module 
+--with-http_ssl_module 
+--with-http_stub_status_module  # 第一个，作用：nginx的客户端连接状态
+--with-http_sub_module # 第三个，作用：http内容替换
+--with-http_v2_module 
+--with-mail 
+--with-mail_ssl_module 
+--with-stream 
+--with-stream_realip_module 
+--with-stream_ssl_module 
+--with-stream_ssl_preread_module 
+--with-cc-opt='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong 
+--param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=generic -fPIC' --with-ld-opt='-Wl,-z,relro -Wl,-z,now -pie'
+
+具体讲解一些：
+
+一、 --with-http_stub_status_module
+# 作用：nginx的客户端连接状态
+# 相关配置语法
+Syntax: stub_staus;
+Default: - [无默认配置]
+Context: server, location
+
+default.conf 文件如下
+server {
+  listen       80;
+  server_name  47.98.181.79; # 也可以写域名
+  # server_name  localhost; # 也可以写域名
+
+  #access_log  /var/log/nginx/host.access.log  main;
+  
+  # 新增，作为测试
+  location /mystatus {
+    stub_status;
+  }
+
+  location / {
+      root   /usr/share/nginx/html; # 访问 / 时，对应文件存放路径 
+      # 经查看 路径/usr/share/nginx/html内 有两个磨人文件： 50x.html  index.html
+      index  index.html index.htm; # 访问 / 时，对应root路径下的哪个文件
+  }
+
+  #error_page  404              /404.html;
+
+  # redirect server error pages to the static page /50x.html
+  #
+  error_page   500 502 503 504  /50x.html;
+  location = /50x.html {
+      root   /usr/share/nginx/html;
+  }
+
+  # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+  #
+  #location ~ \.php$ {
+  #    proxy_pass   http://127.0.0.1;
+  #}
+
+  # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+  #
+  #location ~ \.php$ {
+  #    root           html;
+  #    fastcgi_pass   127.0.0.1:9000;
+  #    fastcgi_index  index.php;
+  #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+  #    include        fastcgi_params;
+  #}
+
+  # deny access to .htaccess files, if Apache's document root
+  # concurs with nginx's one
+  #
+  #location ~ /\.ht {
+  #    deny  all;
+  #}
+}
+
+检查配置语法是否正确
+1 修改了nginx配置文件需要检查配置是否正确，
+nginx -tc /etc/nginx/nginx.conf
+-> nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+-> nginx: configuration file /etc/nginx/nginx.conf test is successful
+2 关闭原来的配置
+nginx -s stop -c /etc/nginx/nginx.conf
+3 重启nginx配置
+nginx -c /etc/nginx/nginx.conf
+
+测试访问地址
+-> 47.98.181.79/mystatus 
+成功内容如下
+Active connections: 2 # nginx当前活跃的连接的状态数
+server accepts handled requests
+ 2 2 1 
+ # 第一个 server accepts
+ # 第二个 server handled
+ # 第三个 server requests
+Reading: 0 Writing: 1 Waiting: 1 
+# 读，写，等待[开启keep-alive时]
+
+
+二、第二个模块讲解
+--with-http_random_index_module
+# 作用：目录中选择一个随机主页 很少用到，主页随机生成一个，多么不稳定
+# 相关配置语法
+Syntax: random_index on|off;
+Default: random_index off;
+Context: location
+
+执行操作
+location / {
+  root   /opt/app/code; # 访问 / 时，对应文件存放路径 
+  random_index on; # 访问 /opt/app/code 目录下的任意一个文件
+  # index  index.html index.htm; # 访问 / 时，对应root路径下的哪个文件
+}
+其中 /opt/app/code 新增三个文件 1.html  2.html  3.html
+- 细节点： 不会访问 以.开头的文件
+
+测试效果
+浏览器访问 http://47.98.181.79/
+返回结果：浏览器每次被刷新后，会返回不同文件的内容
+
+三、第三个模块讲解
+--with-http_sub_module
+# 作用：http内容替换（服务端返回给客户端的响应内容，通过这里给替换掉）
+# 相关配置语法一
+Syntax: sub_filter string replacement;
+Default: -;
+Context: http, server, location
+
+# 相关配置语法二：是否有更新，主要用户缓存中
+Syntax: sub_filter_last_modified on|off; # 响应体字段 last-modified相对应
+Default: sub_filter_last_modified off;
+Context: http, server, location
+
+# 相关配置语法三：是否有更新，主要用户缓存中
+Syntax: sub_filter_once on|off; # 是否匹配第一个on，否则匹配所有off
+Default: sub_filter_once on; # 默认值替换第一个匹配的
+Context: http, server, location
+
+执行操作
+location / {
+  root   /opt/app/code; # 访问 / 时，对应文件存放路径 
+  index  index.html index.htm; # 访问 / 时，对应root路径下的哪个文件
+  sub_filter '<h1>wenlong' '<h1>666wenlong'; # 默认只能替换第一个匹配的
+  sub_filter_once off; # 关闭后，可以替换所有匹配的内容
+}
+其中 cd /opt/app/code 新增三个文件 
+1.html  2.html  3.html submodule.html
+
+submodule.html
+<body>
+  <h1>jeson</h1>
+  <h1>wenlong</h1>
+  <h1>jerry</h1>
+  <h1>aaaa</h1>
+  <h1>bbbb</h1>
+</body>
+
+测试效果
+浏览器访问 http://47.98.181.79/submodule.html
+添加模块替换操作后
+浏览器访问 http://47.98.181.79/submodule.html
+返回结果：浏览器每次被刷新后，会返回不同文件的内容
+- 注意浏览器缓存。建议使用无痕模式查看，确保没有缓存
++ 成功 2-23
