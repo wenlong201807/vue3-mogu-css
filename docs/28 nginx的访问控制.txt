@@ -1,0 +1,111 @@
+
+一、nginx 的访问控制
+
+1 基于ip的访问控制 -http_access_module
+2 基于用户的信任登陆 -http_auth_base_module
+
+
+二、语法讲解1 [必须同时标记允许的和不允许的配置语法]
+1 基于ip的访问控制 -http_access_module
+- 允许访问的地址
+syntax: allow address |CIDR|unix|all;
+Default: -
+Context: http, server, location, limit_except;
+- 不允许访问的地址
+syntax: deny address |CIDR|unix|all;
+Default: -
+Context: http, server, location, limit_except;
+
+
+对应文件 /opt/app/code/admin.html
+二、操作
+查看本机ip
+浏览器中输入 www.ip138.com
+您的iP地址是：[103.75.152.102] 来自：中国北京海淀 电信&联通&移动
+$ 浏览器url为： http://47.98.181.79/admin.html
+
+- 局限性
+只能通过 $remote_addr 控制信任
+模式如下时：
+[场景模型] 客户端[ip1] - 代理层（nginx或者cnd或者7Lay LSB(七层负载均衡)）[ip2] -> 服务端nginx[ip3]
+
+在ip3处获取的 $remote_addr=ip2  # 这里获取的不正确，应该要获取ip1 才是实际需求
+
+- 解决局限性问题
+方法一、采用别的http头信息控制访问，如：http_x_forwarded_for。
+方法二、结合geo模块[后续讲解]
+方法三、通过http自定义变量传递。[自定义变量一级一级往后传]
+
+具体解释方法一机制：
+- 还是存在弊端：此字段不是所有浏览器都存在，也可能被认为修改
+$http_x_forwarded_for=Client IP, Proxy(1) IP, Proxy(2) IP, ...[会集结所有的ip在这里]
+
+[场景模型] 客户端[ip1] - 代理层（nginx或者cnd或者7Lay LSB(七层负载均衡)）[ip2] -> 服务端nginx[ip3]
+
+[场景模型 -> 在代理层中] 
+$http_x_forwarded_for=ip1
+$remote_addr=ip1 [看看差异]
+
+[场景模型 -> 在服务端中] 
+$http_x_forwarded_for=ip1,ip2 (逗号隔开的字符串ip集合)
+$remote_addr=ip2 [看看差异]
+
+
+
+
+三、语法讲解2 [必须同时标记允许的和不允许的配置语法]
+1 基于ip的访问控制 -http_auth_base_module
+- 第一种语法方式：
+syntax: auth_basic string | off;
+Default: auth_basic  off;
+Context: http, server, location, limit_except;
+- 第二种语法方式
+syntax: auth_basic_user_file file; # 此文件用于存储用户权限信息
+Default: -
+Context: http, server, location, limit_except;
+
+完整语法查看官网 https://nginx.org/en/docs/  页面搜索关键词 auth_basic
+加密认证工具 yum install httpd-tools -y
+
+
+对应文件 /opt/app/code/admin.html
+对应nginx配置文件 /etc/nginx/conf.d/auth_mod.conf
+
+
+查看本机ip
+浏览器中输入 www.ip138.com
+您的iP地址是：[103.75.152.102] 来自：中国北京海淀 电信&联通&移动
+$ 浏览器url为： http://47.98.181.79/admin.html
+
+
+
+二、操作
+第一次操作需要先生成配置密码 
+cd /etc/nginx
+$ htpasswd -c ./auth_mod.conf jeson # 当前目录下生成密码文件为 auth_mod.conf 生成对应的密码用户名为jeson 再依据提示输入一个密码： 123456
+- 返回结果如下：
+[root@spark-2022 nginx]# htpasswd -c ./auth_mod_pwd jeson # 密码文件不能以.conf结尾
+New password: 
+Re-type new password: 
+Adding password for user jeson
+
+ls ./auth_conf
+- 查看密码[用户:密码]
+[root@spark-2022 nginx]# more auth_mod_pwd
+jeson:$apr1$.9yvLq9r$JpTjp12oPeM.wW7L9chei1
+
+- 局限性
+1 用户信息依赖文件方式
+2 操作管理机械，效率低下
+- 解决方案
+1 nginx结合LUA实现高效验证
+2 nginx和LDAP打通，利用nginx-auth-ldap模块。但是这个模块不是默认有的，需要自行安装。[后期讲解]
+
+查看本机ip
+浏览器中输入 www.ip138.com
+您的iP地址是：[103.75.152.102] 来自：中国北京海淀 电信&联通&移动
+$ 浏览器url为： http://47.98.181.79/admin.html
+
+
+
+

@@ -9,3 +9,13 @@ nginx -s stop -c /etc/nginx/nginx.conf
 nginx -c /etc/nginx/nginx.conf
 
 ssh root@47.98.181.79
+
+查看日志
+tail -f /var/log/nginx/error.log
+
+查看本机ip
+浏览器中输入 www.ip138.com
+您的iP地址是：[103.75.152.102] 来自：中国北京海淀 电信&联通&移动
+
+
+nginx完整语法查看官网 https://nginx.org/en/docs/  页面搜索关键词 auth_basic

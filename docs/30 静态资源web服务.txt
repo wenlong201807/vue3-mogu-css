@@ -1,0 +1,77 @@
+
+
+具体讲解
+一、静态资源web服务
+[客户](req:jpeg, html, flv, video)  ->  nginx -> [静态文件储存]
+
+静态资源类型：
+定义：非服务器动态运行生成的文件。
+
+类型       种类
+浏览器端渲染   html css  js
+图片
+视频
+文件         txt  等任意下载文件
+
+
+2 静态资源服务场景 CDN（就近访问）
+                      北京nginx【学习内容在这里，看看是怎么运作的】
+（静态资源请求）
+北京的一个用户           湖南nginx           资源存储中心nginx（派发给各个地方的nginx）[静态资源回源]
+（通过DNS排查，会引导北京用户访问 北京的nginx）
+
+                      山东nginx
+
+
+
+配置语法 - 文件读取
+syntax: sendfile on|off;
+Default: sendfile off;
+Context: http, server, location, if in location;
+
+- 引读： --with-file-aio 异步文件读取 【效果不是很明显，不做扩展】
+
+
+配置语法 - tcp_nopush (把多个包做一次性整合，对比一个一个的传递效率就更高了)报文头就只有一份了。
+作用：sendfile开启的情况下，提高网路包的传输效率
+syntax: tcp_nopush on|off;
+Default: tcp_nopush off;
+Context: http, server, location;
+
+
+配置语法 - tcp_nodelay
+作用：keepalive 连接下，提高网络包的传输实时性
+syntax: tcp_nodelay on|off;
+Default: tcp_nodelay off;
+Context: http, server, location, if in location;
+
+
+
+配置语法 - 压缩
+作用：压缩传输：对服务器，客户端都可以降低体积
+syntax: gzip on|off;
+Default: gzip off;
+Context: http, server, location;
+- 压缩作用机制（绝大部分浏览器都支持这种方式）
+客户端（解压）  <----->  nginx(压缩)
+
+
+
+配置语法 - 压缩比率
+作用：压缩传输比率：压缩的越多，体积越小，但是压缩操作会消耗服务端的性能，因此需要按需调节
+syntax: gzip_comp_level level;
+Default: gzip_comp_level 1;
+Context: http, server, location;
+
+
+配置语法 - 压缩版本
+作用：
+syntax: gzip_http_version 1.0 | 1.1;
+Default: gzip_http_version 1.1;
+Context: http, server, location;
+
+
+- 扩展nginx压缩模块
+1 http_gzip_static_module 预读gzip功能【服务器会先去查找对应文件是否有压缩，如果没有，且要求压缩的，则提前进行压缩操作】
+2 http_gunzip_module - 应用支持gunzip的压缩方式 【有些不支持gzip的，则可以通过这个模块解决压缩功能】
+3.5-----
